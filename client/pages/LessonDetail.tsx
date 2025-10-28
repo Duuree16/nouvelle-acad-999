@@ -422,36 +422,6 @@ export default function LessonDetail() {
           </div>
         </div>
 
-        {/* Video Stage */}
-        {stage === "video" && (
-          <Card className="p-6 mb-8">
-            <div className="aspect-video bg-black rounded-lg overflow-hidden mb-6">
-              <iframe
-                width="100%"
-                height="100%"
-                src={lesson.videoUrl}
-                title={lesson.title}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
-              About This Lesson
-            </h2>
-            <p className="text-slate-600 leading-relaxed mb-6">
-              {lesson.description}
-            </p>
-
-            <Button
-              onClick={() => setStage("quiz")}
-              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 h-12"
-            >
-              Proceed to Quiz
-            </Button>
-          </Card>
-        )}
 
         {/* Quiz Stage */}
         {stage === "quiz" && !quizSubmitted && (
