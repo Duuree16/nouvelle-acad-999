@@ -414,41 +414,12 @@ export default function LessonDetail() {
 
         {/* Stage Indicator */}
         <div className="flex items-center justify-center gap-4 mb-8">
-          <button
-            onClick={() => !quizSubmitted && setStage("video")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition ${
-              stage === "video"
-                ? "bg-purple-600 text-white"
-                : quizSubmitted
-                  ? "bg-slate-200 text-slate-600"
-                  : "bg-slate-200 text-slate-600 hover:bg-slate-300"
-            }`}
-          >
-            <span className="w-6 h-6 rounded-full bg-current bg-opacity-30 flex items-center justify-center text-sm">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium bg-purple-600 text-white">
+            <span className="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center text-sm">
               1
             </span>
-            Video
-          </button>
-
-          <div className="h-1 w-8 bg-slate-300"></div>
-
-          <button
-            onClick={() =>
-              stage !== "video" && !quizSubmitted && setStage("quiz")
-            }
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition ${
-              stage !== "video" && !quizSubmitted
-                ? "bg-slate-200 text-slate-600 hover:bg-slate-300"
-                : stage === "quiz" || quizSubmitted
-                  ? "bg-purple-600 text-white"
-                  : "bg-slate-200 text-slate-600"
-            }`}
-          >
-            <span className="w-6 h-6 rounded-full bg-current bg-opacity-30 flex items-center justify-center text-sm">
-              2
-            </span>
-            Quiz
-          </button>
+            Test Your Knowledge
+          </div>
         </div>
 
         {/* Video Stage */}
