@@ -30,7 +30,8 @@ const MOCK_LESSONS: Lesson[] = [
   {
     id: "1",
     title: "Everyday Greetings and Introductions",
-    description: "Learn basic greetings, how to introduce yourself, and common social phrases",
+    description:
+      "Learn basic greetings, how to introduce yourself, and common social phrases",
     duration: 45,
     completed: true,
     progress: 100,
@@ -40,7 +41,8 @@ const MOCK_LESSONS: Lesson[] = [
   {
     id: "2",
     title: "Describing People and Places",
-    description: "Master vocabulary and grammar for describing appearances, personalities, and locations",
+    description:
+      "Master vocabulary and grammar for describing appearances, personalities, and locations",
     duration: 60,
     completed: false,
     progress: 60,
@@ -50,7 +52,8 @@ const MOCK_LESSONS: Lesson[] = [
   {
     id: "3",
     title: "Complex Sentence Structures",
-    description: "Explore advanced grammar including passive voice, conditionals, and subordinate clauses",
+    description:
+      "Explore advanced grammar including passive voice, conditionals, and subordinate clauses",
     duration: 75,
     completed: false,
     progress: 30,
@@ -60,7 +63,8 @@ const MOCK_LESSONS: Lesson[] = [
   {
     id: "4",
     title: "Family and Daily Routines",
-    description: "Learn vocabulary and expressions for family relationships and daily activities",
+    description:
+      "Learn vocabulary and expressions for family relationships and daily activities",
     duration: 55,
     completed: false,
     progress: 0,
@@ -70,7 +74,8 @@ const MOCK_LESSONS: Lesson[] = [
   {
     id: "5",
     title: "Travel and Holiday Conversations",
-    description: "Develop skills for discussing travel plans, booking accommodations, and navigation",
+    description:
+      "Develop skills for discussing travel plans, booking accommodations, and navigation",
     duration: 65,
     completed: false,
     progress: 0,
@@ -80,7 +85,8 @@ const MOCK_LESSONS: Lesson[] = [
   {
     id: "6",
     title: "Business and Professional Communication",
-    description: "Master formal language for business meetings, presentations, and professional correspondence",
+    description:
+      "Master formal language for business meetings, presentations, and professional correspondence",
     duration: 50,
     completed: false,
     progress: 0,

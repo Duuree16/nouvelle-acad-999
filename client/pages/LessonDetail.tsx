@@ -30,13 +30,18 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
         id: "q1",
         type: "multiple-choice",
         question: 'What is the correct response to "How are you?"',
-        options: ["I am fine, thank you", "Yes, please", "No, thank you", "My name is John"],
+        options: [
+          "I am fine, thank you",
+          "Yes, please",
+          "No, thank you",
+          "My name is John",
+        ],
         correctAnswer: "I am fine, thank you",
       },
       {
         id: "q2",
         type: "fill-in-blank",
-        question: 'My name ________ Sarah, and I am from London.',
+        question: "My name ________ Sarah, and I am from London.",
         correctAnswer: "is",
       },
       {
@@ -121,14 +126,16 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
       {
         id: "q3",
         type: "multiple-choice",
-        question: "Complete: Although she was tired, she _________ to the party.",
+        question:
+          "Complete: Although she was tired, she _________ to the party.",
         options: ["went", "go", "going", "gone"],
         correctAnswer: "went",
       },
       {
         id: "q4",
         type: "fill-in-blank",
-        question: "He can speak French, Spanish, and German ________ he is multilingual.",
+        question:
+          "He can speak French, Spanish, and German ________ he is multilingual.",
         correctAnswer: "because",
       },
     ],
@@ -212,7 +219,8 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
       {
         id: "q4",
         type: "fill-in-blank",
-        question: "The beach is a popular ________ destination for summer holidays.",
+        question:
+          "The beach is a popular ________ destination for summer holidays.",
         correctAnswer: "vacation",
       },
     ],
@@ -254,7 +262,8 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
       {
         id: "q4",
         type: "fill-in-blank",
-        question: "In a presentation, you should ________ your main points clearly.",
+        question:
+          "In a presentation, you should ________ your main points clearly.",
         correctAnswer: "explain",
       },
     ],
@@ -421,7 +430,6 @@ export default function LessonDetail() {
             Test Your Knowledge
           </div>
         </div>
-
 
         {/* Quiz Stage */}
         {stage === "quiz" && !quizSubmitted && (

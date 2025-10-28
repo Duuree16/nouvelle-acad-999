@@ -2,12 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import {
-  ArrowLeft,
-  BarChart3,
-  TrendingUp,
-  Award,
-} from "lucide-react";
+import { ArrowLeft, BarChart3, TrendingUp, Award } from "lucide-react";
 
 export default function Progress() {
   const navigate = useNavigate();
