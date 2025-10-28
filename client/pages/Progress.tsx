@@ -36,7 +36,7 @@ export default function Progress() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <Card className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
             <div className="flex items-start justify-between">
               <div>
@@ -68,20 +68,6 @@ export default function Progress() {
                 <p className="text-3xl font-bold text-green-600 mt-2">85%</p>
               </div>
               <TrendingUp className="w-8 h-8 text-green-600 opacity-50" />
-            </div>
-          </Card>
-
-          <Card className="p-6 bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-slate-600 text-sm font-medium">
-                  Current Streak
-                </p>
-                <p className="text-3xl font-bold text-orange-600 mt-2">
-                  7 days
-                </p>
-              </div>
-              <Calendar className="w-8 h-8 text-orange-600 opacity-50" />
             </div>
           </Card>
         </div>
