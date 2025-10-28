@@ -498,18 +498,11 @@ export default function LessonDetail() {
               ))}
             </div>
 
-            <div className="mt-8 flex gap-4">
-              <Button
-                onClick={() => setStage("video")}
-                variant="outline"
-                className="flex-1 h-12"
-              >
-                Back to Video
-              </Button>
+            <div className="mt-8">
               <Button
                 onClick={handleSubmitQuiz}
                 disabled={!allAnswered}
-                className="flex-1 h-12 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:opacity-50"
+                className="w-full h-12 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:opacity-50"
               >
                 Submit Quiz
               </Button>
