@@ -272,28 +272,52 @@ const LESSON_DETAILS: Record<
   }
 > = {
   "1": {
-    title: "Introduction to Web Development",
-    category: "Web Development",
+    title: "Everyday Greetings and Introductions",
+    category: "A2",
     duration: 45,
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     description:
-      "Learn the fundamentals of HTML, CSS, and JavaScript. This comprehensive course covers the basics you need to start building websites.",
+      "Master basic greetings, introductions, and common social phrases. Learn how to confidently meet new people and start conversations in English.",
   },
   "2": {
-    title: "React Basics and Components",
-    category: "Frontend",
+    title: "Describing People and Places",
+    category: "B1",
     duration: 60,
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     description:
-      "Master React fundamentals and component architecture. Learn how to build scalable and maintainable React applications.",
+      "Expand your vocabulary for describing appearances, personalities, and locations. Develop skills to paint vivid pictures with words.",
   },
   "3": {
-    title: "Advanced TypeScript Patterns",
-    category: "Programming",
+    title: "Complex Sentence Structures",
+    category: "B2",
     duration: 75,
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     description:
-      "Explore advanced TypeScript concepts and patterns. Become a TypeScript expert and write type-safe code.",
+      "Master advanced grammar including passive voice, conditionals, and subordinate clauses. Speak and write with sophisticated sentence construction.",
+  },
+  "4": {
+    title: "Family and Daily Routines",
+    category: "A2",
+    duration: 55,
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    description:
+      "Learn vocabulary and expressions for family relationships and everyday activities. Describe your daily life in English with confidence.",
+  },
+  "5": {
+    title: "Travel and Holiday Conversations",
+    category: "B1",
+    duration: 65,
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    description:
+      "Develop practical communication skills for travel situations. Book accommodations, ask for directions, and navigate new places.",
+  },
+  "6": {
+    title: "Business and Professional Communication",
+    category: "B2",
+    duration: 50,
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    description:
+      "Master formal language for business meetings, presentations, and professional correspondence. Excel in corporate English communication.",
   },
 };
 
