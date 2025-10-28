@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '@/context/AuthContext';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import { BookOpen, Play, Calendar, LogOut, Menu, X } from 'lucide-react';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { BookOpen, Play, Calendar, LogOut, Menu, X } from "lucide-react";
 
 interface Lesson {
   id: string;
@@ -28,83 +28,83 @@ interface LiveSession {
 
 const MOCK_LESSONS: Lesson[] = [
   {
-    id: '1',
-    title: 'Introduction to Web Development',
-    description: 'Learn the fundamentals of HTML, CSS, and JavaScript',
+    id: "1",
+    title: "Introduction to Web Development",
+    description: "Learn the fundamentals of HTML, CSS, and JavaScript",
     duration: 45,
     completed: true,
     progress: 100,
-    thumbnail: 'bg-gradient-to-br from-blue-400 to-blue-600',
-    category: 'Web Development',
+    thumbnail: "bg-gradient-to-br from-blue-400 to-blue-600",
+    category: "Web Development",
   },
   {
-    id: '2',
-    title: 'React Basics and Components',
-    description: 'Master React fundamentals and component architecture',
+    id: "2",
+    title: "React Basics and Components",
+    description: "Master React fundamentals and component architecture",
     duration: 60,
     completed: false,
     progress: 60,
-    thumbnail: 'bg-gradient-to-br from-purple-400 to-pink-600',
-    category: 'Frontend',
+    thumbnail: "bg-gradient-to-br from-purple-400 to-pink-600",
+    category: "Frontend",
   },
   {
-    id: '3',
-    title: 'Advanced TypeScript Patterns',
-    description: 'Explore advanced TypeScript concepts and patterns',
+    id: "3",
+    title: "Advanced TypeScript Patterns",
+    description: "Explore advanced TypeScript concepts and patterns",
     duration: 75,
     completed: false,
     progress: 30,
-    thumbnail: 'bg-gradient-to-br from-cyan-400 to-blue-600',
-    category: 'Programming',
+    thumbnail: "bg-gradient-to-br from-cyan-400 to-blue-600",
+    category: "Programming",
   },
   {
-    id: '4',
-    title: 'Database Design Fundamentals',
-    description: 'Learn database design and SQL best practices',
+    id: "4",
+    title: "Database Design Fundamentals",
+    description: "Learn database design and SQL best practices",
     duration: 55,
     completed: false,
     progress: 0,
-    thumbnail: 'bg-gradient-to-br from-green-400 to-teal-600',
-    category: 'Backend',
+    thumbnail: "bg-gradient-to-br from-green-400 to-teal-600",
+    category: "Backend",
   },
   {
-    id: '5',
-    title: 'API Development with Express',
-    description: 'Build scalable APIs with Express.js',
+    id: "5",
+    title: "API Development with Express",
+    description: "Build scalable APIs with Express.js",
     duration: 65,
     completed: false,
     progress: 0,
-    thumbnail: 'bg-gradient-to-br from-orange-400 to-red-600',
-    category: 'Backend',
+    thumbnail: "bg-gradient-to-br from-orange-400 to-red-600",
+    category: "Backend",
   },
   {
-    id: '6',
-    title: 'Web Security Essentials',
-    description: 'Understand core web security principles',
+    id: "6",
+    title: "Web Security Essentials",
+    description: "Understand core web security principles",
     duration: 50,
     completed: false,
     progress: 0,
-    thumbnail: 'bg-gradient-to-br from-red-400 to-pink-600',
-    category: 'Security',
+    thumbnail: "bg-gradient-to-br from-red-400 to-pink-600",
+    category: "Security",
   },
 ];
 
 const MOCK_SESSIONS: LiveSession[] = [
   {
-    id: '1',
-    title: 'React Office Hours - Q&A Session',
-    startTime: 'Today at 3:00 PM',
-    instructor: 'Sarah Chen',
+    id: "1",
+    title: "React Office Hours - Q&A Session",
+    startTime: "Today at 3:00 PM",
+    instructor: "Sarah Chen",
     participants: 24,
-    zoomLink: 'https://zoom.us',
+    zoomLink: "https://zoom.us",
   },
   {
-    id: '2',
-    title: 'TypeScript Advanced Patterns Workshop',
-    startTime: 'Tomorrow at 10:00 AM',
-    instructor: 'John Developer',
+    id: "2",
+    title: "TypeScript Advanced Patterns Workshop",
+    startTime: "Tomorrow at 10:00 AM",
+    instructor: "John Developer",
     participants: 18,
-    zoomLink: 'https://zoom.us',
+    zoomLink: "https://zoom.us",
   },
 ];
 
@@ -115,19 +115,19 @@ export default function Dashboard() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const filteredLessons = activeCategory
-    ? MOCK_LESSONS.filter(lesson => lesson.category === activeCategory)
+    ? MOCK_LESSONS.filter((lesson) => lesson.category === activeCategory)
     : MOCK_LESSONS;
 
-  const completedCount = MOCK_LESSONS.filter(l => l.completed).length;
+  const completedCount = MOCK_LESSONS.filter((l) => l.completed).length;
   const averageScore = Math.round(
-    MOCK_LESSONS.reduce((sum, l) => sum + l.progress, 0) / MOCK_LESSONS.length
+    MOCK_LESSONS.reduce((sum, l) => sum + l.progress, 0) / MOCK_LESSONS.length,
   );
 
-  const categories = [...new Set(MOCK_LESSONS.map(l => l.category))];
+  const categories = [...new Set(MOCK_LESSONS.map((l) => l.category))];
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
@@ -145,19 +145,19 @@ export default function Dashboard() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <button
-              onClick={() => navigate('/dashboard')}
+              onClick={() => navigate("/dashboard")}
               className="text-slate-600 hover:text-purple-600 font-medium transition"
             >
               Home
             </button>
             <button
-              onClick={() => navigate('/progress')}
+              onClick={() => navigate("/progress")}
               className="text-slate-600 hover:text-purple-600 font-medium transition"
             >
               Progress
             </button>
             <button
-              onClick={() => navigate('/sessions')}
+              onClick={() => navigate("/sessions")}
               className="text-slate-600 hover:text-purple-600 font-medium transition"
             >
               Live Sessions
@@ -209,7 +209,7 @@ export default function Dashboard() {
             <div className="px-4 py-4 space-y-3">
               <button
                 onClick={() => {
-                  navigate('/dashboard');
+                  navigate("/dashboard");
                   setMobileMenuOpen(false);
                 }}
                 className="block w-full text-left px-4 py-2 text-slate-600 hover:bg-slate-50 rounded-lg"
@@ -218,7 +218,7 @@ export default function Dashboard() {
               </button>
               <button
                 onClick={() => {
-                  navigate('/progress');
+                  navigate("/progress");
                   setMobileMenuOpen(false);
                 }}
                 className="block w-full text-left px-4 py-2 text-slate-600 hover:bg-slate-50 rounded-lg"
@@ -227,7 +227,7 @@ export default function Dashboard() {
               </button>
               <button
                 onClick={() => {
-                  navigate('/sessions');
+                  navigate("/sessions");
                   setMobileMenuOpen(false);
                 }}
                 className="block w-full text-left px-4 py-2 text-slate-600 hover:bg-slate-50 rounded-lg"
@@ -263,9 +263,15 @@ export default function Dashboard() {
           <Card className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-slate-600 text-sm font-medium">Completed Lessons</p>
-                <p className="text-3xl font-bold text-purple-600 mt-2">{completedCount}</p>
-                <p className="text-sm text-slate-600 mt-1">of {MOCK_LESSONS.length} lessons</p>
+                <p className="text-slate-600 text-sm font-medium">
+                  Completed Lessons
+                </p>
+                <p className="text-3xl font-bold text-purple-600 mt-2">
+                  {completedCount}
+                </p>
+                <p className="text-sm text-slate-600 mt-1">
+                  of {MOCK_LESSONS.length} lessons
+                </p>
               </div>
               <BookOpen className="w-8 h-8 text-purple-600 opacity-50" />
             </div>
@@ -274,9 +280,15 @@ export default function Dashboard() {
           <Card className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-slate-600 text-sm font-medium">Average Score</p>
-                <p className="text-3xl font-bold text-blue-600 mt-2">{averageScore}%</p>
-                <p className="text-sm text-slate-600 mt-1">Across all lessons</p>
+                <p className="text-slate-600 text-sm font-medium">
+                  Average Score
+                </p>
+                <p className="text-3xl font-bold text-blue-600 mt-2">
+                  {averageScore}%
+                </p>
+                <p className="text-sm text-slate-600 mt-1">
+                  Across all lessons
+                </p>
               </div>
               <div className="w-8 h-8 rounded-full bg-blue-600 opacity-20 flex items-center justify-center">
                 <span className="text-blue-600 font-bold">✓</span>
@@ -287,8 +299,12 @@ export default function Dashboard() {
           <Card className="p-6 bg-gradient-to-br from-pink-50 to-pink-100 border-pink-200">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-slate-600 text-sm font-medium">Live Sessions</p>
-                <p className="text-3xl font-bold text-pink-600 mt-2">{MOCK_SESSIONS.length}</p>
+                <p className="text-slate-600 text-sm font-medium">
+                  Live Sessions
+                </p>
+                <p className="text-3xl font-bold text-pink-600 mt-2">
+                  {MOCK_SESSIONS.length}
+                </p>
                 <p className="text-sm text-slate-600 mt-1">Coming up</p>
               </div>
               <Calendar className="w-8 h-8 text-pink-600 opacity-50" />
@@ -300,11 +316,15 @@ export default function Dashboard() {
         <div className="mb-12">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-2xl font-bold text-slate-900">Upcoming Live Sessions</h3>
-              <p className="text-slate-600 text-sm mt-1">Join interactive learning sessions with instructors</p>
+              <h3 className="text-2xl font-bold text-slate-900">
+                Upcoming Live Sessions
+              </h3>
+              <p className="text-slate-600 text-sm mt-1">
+                Join interactive learning sessions with instructors
+              </p>
             </div>
             <Button
-              onClick={() => navigate('/sessions')}
+              onClick={() => navigate("/sessions")}
               variant="outline"
               className="hidden sm:flex"
             >
@@ -313,16 +333,23 @@ export default function Dashboard() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {MOCK_SESSIONS.map(session => (
-              <Card key={session.id} className="p-6 hover:shadow-lg transition-shadow">
+            {MOCK_SESSIONS.map((session) => (
+              <Card
+                key={session.id}
+                className="p-6 hover:shadow-lg transition-shadow"
+              >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-rose-600 flex items-center justify-center">
                       <Play className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-slate-900">{session.title}</h4>
-                      <p className="text-sm text-slate-600">{session.instructor}</p>
+                      <h4 className="font-semibold text-slate-900">
+                        {session.title}
+                      </h4>
+                      <p className="text-sm text-slate-600">
+                        {session.instructor}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -338,7 +365,7 @@ export default function Dashboard() {
           </div>
 
           <Button
-            onClick={() => navigate('/sessions')}
+            onClick={() => navigate("/sessions")}
             variant="outline"
             className="w-full sm:hidden mt-4"
           >
@@ -349,7 +376,9 @@ export default function Dashboard() {
         {/* Lessons Section */}
         <div>
           <div className="mb-6">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">Your Lessons</h3>
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              Your Lessons
+            </h3>
 
             {/* Category Filter */}
             <div className="flex flex-wrap gap-2 mb-6">
@@ -357,20 +386,20 @@ export default function Dashboard() {
                 onClick={() => setActiveCategory(null)}
                 className={`px-4 py-2 rounded-full font-medium transition ${
                   activeCategory === null
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+                    ? "bg-purple-600 text-white"
+                    : "bg-slate-200 text-slate-700 hover:bg-slate-300"
                 }`}
               >
                 All Lessons
               </button>
-              {categories.map(category => (
+              {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
                   className={`px-4 py-2 rounded-full font-medium transition ${
                     activeCategory === category
-                      ? 'bg-purple-600 text-white'
-                      : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+                      ? "bg-purple-600 text-white"
+                      : "bg-slate-200 text-slate-700 hover:bg-slate-300"
                   }`}
                 >
                   {category}
@@ -381,13 +410,15 @@ export default function Dashboard() {
 
           {/* Lessons Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredLessons.map(lesson => (
+            {filteredLessons.map((lesson) => (
               <Card
                 key={lesson.id}
                 className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group"
                 onClick={() => navigate(`/lesson/${lesson.id}`)}
               >
-                <div className={`${lesson.thumbnail} h-40 flex items-center justify-center relative overflow-hidden`}>
+                <div
+                  className={`${lesson.thumbnail} h-40 flex items-center justify-center relative overflow-hidden`}
+                >
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
                   {lesson.completed && (
                     <div className="absolute top-3 right-3 bg-green-500 text-white rounded-full p-2">
@@ -402,16 +433,24 @@ export default function Dashboard() {
                     <span className="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">
                       {lesson.category}
                     </span>
-                    <span className="text-xs text-slate-500">{lesson.duration} min</span>
+                    <span className="text-xs text-slate-500">
+                      {lesson.duration} min
+                    </span>
                   </div>
 
-                  <h4 className="font-semibold text-slate-900 mb-2 line-clamp-2">{lesson.title}</h4>
-                  <p className="text-sm text-slate-600 mb-4 line-clamp-2">{lesson.description}</p>
+                  <h4 className="font-semibold text-slate-900 mb-2 line-clamp-2">
+                    {lesson.title}
+                  </h4>
+                  <p className="text-sm text-slate-600 mb-4 line-clamp-2">
+                    {lesson.description}
+                  </p>
 
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-slate-600">Progress</span>
-                      <span className="font-semibold text-slate-900">{lesson.progress}%</span>
+                      <span className="font-semibold text-slate-900">
+                        {lesson.progress}%
+                      </span>
                     </div>
                     <Progress value={lesson.progress} className="h-2" />
                   </div>
@@ -423,7 +462,7 @@ export default function Dashboard() {
                       navigate(`/lesson/${lesson.id}`);
                     }}
                   >
-                    {lesson.completed ? 'Review Lesson' : 'Continue Learning'}
+                    {lesson.completed ? "Review Lesson" : "Continue Learning"}
                   </Button>
                 </div>
               </Card>

@@ -1,33 +1,33 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '@/context/AuthContext';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Lock, Mail, BookOpen } from 'lucide-react';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Lock, Mail, BookOpen } from "lucide-react";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const { login } = useAuth();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     if (!email || !password) {
-      setError('Please fill in all fields');
+      setError("Please fill in all fields");
       return;
     }
 
-    if (!email.includes('@')) {
-      setError('Please enter a valid email');
+    if (!email.includes("@")) {
+      setError("Please enter a valid email");
       return;
     }
 
     login(email, password);
-    navigate('/dashboard');
+    navigate("/dashboard");
   };
 
   return (
@@ -48,7 +48,9 @@ export default function Login() {
             </div>
           </div>
           <h1 className="text-3xl font-bold text-slate-900 mb-2">EduHub</h1>
-          <p className="text-slate-600">Learn at your own pace, achieve your goals</p>
+          <p className="text-slate-600">
+            Learn at your own pace, achieve your goals
+          </p>
         </div>
 
         {/* Login Card */}
@@ -56,7 +58,10 @@ export default function Login() {
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Email Input */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-slate-700 mb-2"
+              >
                 Email Address
               </label>
               <div className="relative">
@@ -74,7 +79,10 @@ export default function Login() {
 
             {/* Password Input */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-2">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-slate-700 mb-2"
+              >
                 Password
               </label>
               <div className="relative">
