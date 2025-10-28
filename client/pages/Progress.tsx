@@ -6,7 +6,6 @@ import {
   ArrowLeft,
   BarChart3,
   TrendingUp,
-  Calendar,
   Award,
 } from "lucide-react";
 
