@@ -25,7 +25,12 @@ const App = () => (
   </QueryClientProvider>
 );
 
-const rootElement = document.getElementById("root");
-if (rootElement && !rootElement.hasChildNodes()) {
-  createRoot(rootElement).render(<App />);
+export default App;
+
+// Render only if this is the entry point
+if (typeof window !== "undefined") {
+  const container = document.getElementById("root");
+  if (container && !container.hasChildNodes()) {
+    createRoot(container).render(<App />);
+  }
 }
