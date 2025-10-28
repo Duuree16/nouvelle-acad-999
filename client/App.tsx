@@ -11,26 +11,23 @@ import { AppRoutes } from "@/components/AppRoutes";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-      <AuthProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <AppRoutes />
-        </TooltipProvider>
-      </AuthProvider>
-    </BrowserRouter>
-  </QueryClientProvider>
-);
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <AuthProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <AppRoutes />
+          </TooltipProvider>
+        </AuthProvider>
+      </BrowserRouter>
+    </QueryClientProvider>
+  );
+}
 
-export default App;
-
-// Render only if this is the entry point
-if (typeof window !== "undefined") {
-  const container = document.getElementById("root");
-  if (container && !container.hasChildNodes()) {
-    createRoot(container).render(<App />);
-  }
+const container = document.getElementById("root");
+if (container) {
+  createRoot(container).render(<App />);
 }
