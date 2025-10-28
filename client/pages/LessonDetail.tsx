@@ -324,7 +324,7 @@ const LESSON_DETAILS: Record<
 export default function LessonDetail() {
   const { lessonId } = useParams<{ lessonId: string }>();
   const navigate = useNavigate();
-  const [stage, setStage] = useState<"video" | "quiz" | "results">("video");
+  const [stage, setStage] = useState<"quiz" | "results">("quiz");
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [quizSubmitted, setQuizSubmitted] = useState(false);
 
