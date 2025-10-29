@@ -115,7 +115,7 @@ const MOCK_SESSIONS: LiveSession[] = [
 ];
 
 export default function Dashboard() {
-  const { user, logout } = useAuth();
+  const { user, logout, getLessonProgress } = useAuth();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -124,10 +124,15 @@ export default function Dashboard() {
     ? MOCK_LESSONS.filter((lesson) => lesson.category === activeCategory)
     : MOCK_LESSONS;
 
-  const completedCount = MOCK_LESSONS.filter((l) => l.completed).length;
-  const averageScore = Math.round(
-    MOCK_LESSONS.reduce((sum, l) => sum + l.progress, 0) / MOCK_LESSONS.length,
-  );
+  const completedCount = user
+    ? Object.values(user.lessons).filter((l) => l.completed).length
+    : 0;
+  const completedLessons = user ? Object.values(user.lessons).filter((l) => l.completed) : [];
+  const averageScore = completedLessons.length > 0
+    ? Math.round(
+        completedLessons.reduce((sum, l) => sum + l.score, 0) / completedLessons.length,
+      )
+    : 0;
 
   const categories = [...new Set(MOCK_LESSONS.map((l) => l.category))];
 
