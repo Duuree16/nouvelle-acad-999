@@ -147,29 +147,29 @@ export default function Dashboard() {
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="bg-gradient-to-br from-purple-600 to-blue-600 p-2 rounded-lg">
+            <div className="bg-gradient-to-br from-green-600 to-emerald-600 p-2 rounded-lg">
               <BookOpen className="w-6 h-6 text-white" />
             </div>
-            <h1 className="text-xl font-bold text-slate-900">EduHub</h1>
+            <h1 className="text-xl font-bold text-slate-900">NOUVELLE ACADEMY</h1>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <button
               onClick={() => navigate("/dashboard")}
-              className="text-slate-600 hover:text-purple-600 font-medium transition"
+              className="text-slate-600 hover:text-green-600 font-medium transition"
             >
               Home
             </button>
             <button
               onClick={() => navigate("/progress")}
-              className="text-slate-600 hover:text-purple-600 font-medium transition"
+              className="text-slate-600 hover:text-green-600 font-medium transition"
             >
               Progress
             </button>
             <button
               onClick={() => navigate("/sessions")}
-              className="text-slate-600 hover:text-purple-600 font-medium transition"
+              className="text-slate-600 hover:text-green-600 font-medium transition"
             >
               Live Sessions
             </button>
