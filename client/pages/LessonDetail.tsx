@@ -393,7 +393,7 @@ export default function LessonDetail() {
   const handleSubmitQuiz = () => {
     if (allAnswered) {
       const finalScore = calculateScore();
-      updateLessonProgress(lessonId!, finalScore, finalScore === 100);
+      updateLessonProgress(lessonId!, finalScore, finalScore >= 50);
       setQuizSubmitted(true);
       setStage("results");
     }
