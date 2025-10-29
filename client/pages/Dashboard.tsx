@@ -301,24 +301,24 @@ export default function Dashboard() {
                   Across all lessons
                 </p>
               </div>
-              <div className="w-8 h-8 rounded-full bg-blue-600 opacity-20 flex items-center justify-center">
-                <span className="text-blue-600 font-bold">✓</span>
+              <div className="w-8 h-8 rounded-full bg-emerald-600 opacity-20 flex items-center justify-center">
+                <span className="text-emerald-600 font-bold">✓</span>
               </div>
             </div>
           </Card>
 
-          <Card className="p-6 bg-gradient-to-br from-pink-50 to-pink-100 border-pink-200">
+          <Card className="p-6 bg-gradient-to-br from-lime-50 to-lime-100 border-lime-200">
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-slate-600 text-sm font-medium">
                   Live Sessions
                 </p>
-                <p className="text-3xl font-bold text-pink-600 mt-2">
+                <p className="text-3xl font-bold text-lime-600 mt-2">
                   {MOCK_SESSIONS.length}
                 </p>
                 <p className="text-sm text-slate-600 mt-1">Coming up</p>
               </div>
-              <Calendar className="w-8 h-8 text-pink-600 opacity-50" />
+              <Calendar className="w-8 h-8 text-lime-600 opacity-50" />
             </div>
           </Card>
         </div>
