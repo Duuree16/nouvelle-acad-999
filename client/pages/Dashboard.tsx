@@ -127,12 +127,16 @@ export default function Dashboard() {
   const completedCount = user
     ? Object.values(user.lessons).filter((l) => l.completed).length
     : 0;
-  const completedLessons = user ? Object.values(user.lessons).filter((l) => l.completed) : [];
-  const averageScore = completedLessons.length > 0
-    ? Math.round(
-        completedLessons.reduce((sum, l) => sum + l.score, 0) / completedLessons.length,
-      )
-    : 0;
+  const completedLessons = user
+    ? Object.values(user.lessons).filter((l) => l.completed)
+    : [];
+  const averageScore =
+    completedLessons.length > 0
+      ? Math.round(
+          completedLessons.reduce((sum, l) => sum + l.score, 0) /
+            completedLessons.length,
+        )
+      : 0;
 
   const categories = [...new Set(MOCK_LESSONS.map((l) => l.category))];
 
@@ -150,7 +154,9 @@ export default function Dashboard() {
             <div className="bg-gradient-to-br from-green-600 to-emerald-600 p-2 rounded-lg">
               <BookOpen className="w-6 h-6 text-white" />
             </div>
-            <h1 className="text-xl font-bold text-slate-900">NOUVELLE ACADEMY</h1>
+            <h1 className="text-xl font-bold text-slate-900">
+              NOUVELLE ACADEMY
+            </h1>
           </div>
 
           {/* Desktop Navigation */}
@@ -460,12 +466,17 @@ export default function Dashboard() {
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-slate-600">Progress</span>
                       {user?.lessons[lesson.id] ? (
-                        <span className="font-semibold text-slate-900">{user.lessons[lesson.id].score}%</span>
+                        <span className="font-semibold text-slate-900">
+                          {user.lessons[lesson.id].score}%
+                        </span>
                       ) : (
                         <span className="font-semibold text-slate-900">0%</span>
                       )}
                     </div>
-                    <Progress value={user?.lessons[lesson.id]?.score || 0} className="h-2" />
+                    <Progress
+                      value={user?.lessons[lesson.id]?.score || 0}
+                      className="h-2"
+                    />
                   </div>
 
                   <Button
@@ -475,7 +486,9 @@ export default function Dashboard() {
                       navigate(`/lesson/${lesson.id}`);
                     }}
                   >
-                    {user?.lessons[lesson.id]?.completed ? "Review Lesson" : "Start Lesson"}
+                    {user?.lessons[lesson.id]?.completed
+                      ? "Review Lesson"
+                      : "Start Lesson"}
                   </Button>
                 </div>
               </Card>

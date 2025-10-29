@@ -55,16 +55,19 @@ export default function Progress() {
         .sort(
           (a, b) =>
             new Date(b.completedAt || "").getTime() -
-            new Date(a.completedAt || "").getTime()
+            new Date(a.completedAt || "").getTime(),
         )
     : [];
 
   const totalHours =
     completedLessons.length > 0
       ? Math.round(
-          completedLessons.reduce((sum, l) => sum + (l.lessonDetails?.duration || 0), 0) /
-            60 *
-            10
+          (completedLessons.reduce(
+            (sum, l) => sum + (l.lessonDetails?.duration || 0),
+            0,
+          ) /
+            60) *
+            10,
         ) / 10
       : 0;
 
@@ -72,7 +75,7 @@ export default function Progress() {
     completedLessons.length > 0
       ? Math.round(
           completedLessons.reduce((sum, l) => sum + l.score, 0) /
-            completedLessons.length
+            completedLessons.length,
         )
       : 0;
 
@@ -165,7 +168,9 @@ export default function Progress() {
                         </span>
                         <span className="text-xs text-slate-500">
                           Completed{" "}
-                          {new Date(lesson.completedAt || "").toLocaleDateString()}
+                          {new Date(
+                            lesson.completedAt || "",
+                          ).toLocaleDateString()}
                         </span>
                       </div>
                       <h3 className="text-lg font-semibold text-slate-900 mb-2">

@@ -21,7 +21,11 @@ interface AuthContextType {
   isAuthenticated: boolean;
   login: (email: string, password: string) => void;
   logout: () => void;
-  updateLessonProgress: (lessonId: string, score: number, completed: boolean) => void;
+  updateLessonProgress: (
+    lessonId: string,
+    score: number,
+    completed: boolean,
+  ) => void;
   getLessonProgress: (lessonId: string) => LessonProgress | undefined;
 }
 
@@ -53,7 +57,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   const updateLessonProgress = (
     lessonId: string,
     score: number,
-    completed: boolean
+    completed: boolean,
   ) => {
     if (!user) return;
 
