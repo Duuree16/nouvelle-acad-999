@@ -351,7 +351,7 @@ export default function Dashboard() {
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-rose-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center">
                       <Play className="w-5 h-5 text-white" />
                     </div>
                     <div>
@@ -368,7 +368,7 @@ export default function Dashboard() {
                   <p>🕐 {session.startTime}</p>
                   <p>👥 {session.participants} participants</p>
                 </div>
-                <Button className="w-full bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700">
+                <Button className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
                   Join Session
                 </Button>
               </Card>
@@ -397,7 +397,7 @@ export default function Dashboard() {
                 onClick={() => setActiveCategory(null)}
                 className={`px-4 py-2 rounded-full font-medium transition ${
                   activeCategory === null
-                    ? "bg-purple-600 text-white"
+                    ? "bg-green-600 text-white"
                     : "bg-slate-200 text-slate-700 hover:bg-slate-300"
                 }`}
               >
@@ -409,7 +409,7 @@ export default function Dashboard() {
                   onClick={() => setActiveCategory(category)}
                   className={`px-4 py-2 rounded-full font-medium transition ${
                     activeCategory === category
-                      ? "bg-purple-600 text-white"
+                      ? "bg-green-600 text-white"
                       : "bg-slate-200 text-slate-700 hover:bg-slate-300"
                   }`}
                 >
@@ -441,7 +441,7 @@ export default function Dashboard() {
 
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">
+                    <span className="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full">
                       {lesson.category}
                     </span>
                     <span className="text-xs text-slate-500">
@@ -459,21 +459,23 @@ export default function Dashboard() {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-slate-600">Progress</span>
-                      <span className="font-semibold text-slate-900">
-                        {lesson.progress}%
-                      </span>
+                      {user?.lessons[lesson.id] ? (
+                        <span className="font-semibold text-slate-900">{user.lessons[lesson.id].score}%</span>
+                      ) : (
+                        <span className="font-semibold text-slate-900">0%</span>
+                      )}
                     </div>
-                    <Progress value={lesson.progress} className="h-2" />
+                    <Progress value={user?.lessons[lesson.id]?.score || 0} className="h-2" />
                   </div>
 
                   <Button
-                    className="w-full mt-4"
+                    className="w-full mt-4 bg-green-600 hover:bg-green-700"
                     onClick={(e) => {
                       e.stopPropagation();
                       navigate(`/lesson/${lesson.id}`);
                     }}
                   >
-                    {lesson.completed ? "Review Lesson" : "Continue Learning"}
+                    {user?.lessons[lesson.id]?.completed ? "Review Lesson" : "Start Lesson"}
                   </Button>
                 </div>
               </Card>
