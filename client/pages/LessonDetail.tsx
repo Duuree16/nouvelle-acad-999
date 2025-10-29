@@ -333,6 +333,7 @@ const LESSON_DETAILS: Record<
 export default function LessonDetail() {
   const { lessonId } = useParams<{ lessonId: string }>();
   const navigate = useNavigate();
+  const { updateLessonProgress } = useAuth();
   const [stage, setStage] = useState<"quiz" | "results">("quiz");
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [quizSubmitted, setQuizSubmitted] = useState(false);
