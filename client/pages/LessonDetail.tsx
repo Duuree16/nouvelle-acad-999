@@ -414,7 +414,7 @@ export default function LessonDetail() {
 
         {/* Lesson Info */}
         <div className="mb-8">
-          <span className="inline-block bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium mb-2">
+          <span className="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium mb-2">
             {lesson.category}
           </span>
           <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">
@@ -425,9 +425,24 @@ export default function LessonDetail() {
           </p>
         </div>
 
+        {/* Video Player */}
+        <Card className="p-6 mb-8">
+          <div className="aspect-video bg-black rounded-lg overflow-hidden">
+            <iframe
+              width="100%"
+              height="100%"
+              src={lesson.videoUrl}
+              title={lesson.title}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </Card>
+
         {/* Stage Indicator */}
         <div className="flex items-center justify-center gap-4 mb-8">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium bg-purple-600 text-white">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium bg-green-600 text-white">
             <span className="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center text-sm">
               1
             </span>
