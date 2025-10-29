@@ -431,7 +431,7 @@ export default function Dashboard() {
                   className={`${lesson.thumbnail} h-40 flex items-center justify-center relative overflow-hidden`}
                 >
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
-                  {lesson.completed && (
+                  {user?.lessons[lesson.id]?.completed && (
                     <div className="absolute top-3 right-3 bg-green-500 text-white rounded-full p-2">
                       <span className="text-sm font-bold">✓</span>
                     </div>
