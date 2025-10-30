@@ -4,9 +4,15 @@ interface VideoPlayerProps {
   className?: string;
 }
 
-export const VideoPlayer = ({ src, title, className = "" }: VideoPlayerProps) => {
+export const VideoPlayer = ({
+  src,
+  title,
+  className = "",
+}: VideoPlayerProps) => {
   return (
-    <div className={`aspect-video bg-black rounded-lg overflow-hidden ${className}`}>
+    <div
+      className={`aspect-video bg-black rounded-lg overflow-hidden ${className}`}
+    >
       <video
         width="100%"
         height="100%"

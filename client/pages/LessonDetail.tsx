@@ -11,7 +11,11 @@ import { ArrowLeft, Check, X } from "lucide-react";
 
 interface Question {
   id: string;
-  type: "multiple-choice" | "fill-in-blank" | "multiple-correct" | "binary-choice";
+  type:
+    | "multiple-choice"
+    | "fill-in-blank"
+    | "multiple-correct"
+    | "binary-choice";
   question: string;
   options?: string[];
   correctAnswer?: string;
@@ -62,7 +66,8 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
       {
         id: "q4",
         type: "multiple-correct",
-        question: "Which of the following are polite ways to greet someone? (Select all that apply)",
+        question:
+          "Which of the following are polite ways to greet someone? (Select all that apply)",
         options: [
           "Good morning",
           "Nice to meet you",
@@ -71,7 +76,12 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
           "Sup?",
           "Pleased to make your acquaintance",
         ],
-        correctAnswers: ["Good morning", "Nice to meet you", "How do you do?", "Pleased to make your acquaintance"],
+        correctAnswers: [
+          "Good morning",
+          "Nice to meet you",
+          "How do you do?",
+          "Pleased to make your acquaintance",
+        ],
       },
     ],
   },
@@ -97,7 +107,8 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
       {
         id: "q3",
         type: "multiple-correct",
-        question: "Which words can describe a person's appearance? (Select all that apply)",
+        question:
+          "Which words can describe a person's appearance? (Select all that apply)",
         options: [
           "Tall",
           "Happy",
@@ -143,7 +154,8 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
       {
         id: "q3",
         type: "multiple-correct",
-        question: "Which are correct ways to use subordinate clauses? (Select all that apply)",
+        question:
+          "Which are correct ways to use subordinate clauses? (Select all that apply)",
         options: [
           "After he finished his work",
           "Because the weather was nice",
@@ -151,7 +163,11 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
           "Although it was difficult",
           "The big red car",
         ],
-        correctAnswers: ["After he finished his work", "Because the weather was nice", "Although it was difficult"],
+        correctAnswers: [
+          "After he finished his work",
+          "Because the weather was nice",
+          "Although it was difficult",
+        ],
       },
       {
         id: "q4",
@@ -177,7 +193,8 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
       {
         id: "q2",
         type: "multiple-correct",
-        question: "Which are common family relationships? (Select all that apply)",
+        question:
+          "Which are common family relationships? (Select all that apply)",
         options: [
           "Mother",
           "Sibling",
@@ -235,7 +252,8 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
       {
         id: "q3",
         type: "multiple-correct",
-        question: "Which documents might you need for travel? (Select all that apply)",
+        question:
+          "Which documents might you need for travel? (Select all that apply)",
         options: [
           "Passport",
           "Visa",
@@ -244,7 +262,12 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
           "Library card",
           "Hotel confirmation",
         ],
-        correctAnswers: ["Passport", "Visa", "Travel itinerary", "Hotel confirmation"],
+        correctAnswers: [
+          "Passport",
+          "Visa",
+          "Travel itinerary",
+          "Hotel confirmation",
+        ],
       },
       {
         id: "q4",
@@ -270,7 +293,8 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
       {
         id: "q2",
         type: "multiple-correct",
-        question: "Which are appropriate for formal business communication? (Select all that apply)",
+        question:
+          "Which are appropriate for formal business communication? (Select all that apply)",
         options: [
           "Professional tone",
           "Correct grammar",
@@ -279,7 +303,12 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
           "Emojis",
           "Clear structure",
         ],
-        correctAnswers: ["Professional tone", "Correct grammar", "Timely responses", "Clear structure"],
+        correctAnswers: [
+          "Professional tone",
+          "Correct grammar",
+          "Timely responses",
+          "Clear structure",
+        ],
       },
       {
         id: "q3",
@@ -411,7 +440,10 @@ export default function LessonDetail() {
       const sortedCorrect = [...correctAnswers].sort();
       return sortedUser.every((ans, idx) => ans === sortedCorrect[idx]);
     } else {
-      const userAnswer = (answers[question.id] || "").toString().trim().toLowerCase();
+      const userAnswer = (answers[question.id] || "")
+        .toString()
+        .trim()
+        .toLowerCase();
       const correctAnswer = (question.correctAnswer || "").trim().toLowerCase();
       return userAnswer === correctAnswer;
     }
@@ -508,7 +540,9 @@ export default function LessonDetail() {
                   {answeredCount} / {totalQuestions} answered
                 </span>
               </div>
-              <Progress value={((currentQuestionIndex + 1) / totalQuestions) * 100} />
+              <Progress
+                value={((currentQuestionIndex + 1) / totalQuestions) * 100}
+              />
             </div>
 
             {quiz.questions.length > 0 && (
@@ -518,49 +552,73 @@ export default function LessonDetail() {
                     {quiz.questions[currentQuestionIndex].question}
                   </h3>
 
-                  {quiz.questions[currentQuestionIndex].type === "multiple-choice" && (
+                  {quiz.questions[currentQuestionIndex].type ===
+                    "multiple-choice" && (
                     <div className="space-y-3">
-                      {quiz.questions[currentQuestionIndex].options?.map((option) => (
-                        <label
-                          key={option}
-                          className="flex items-center p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-primary hover:bg-slate-50 transition"
-                        >
-                          <input
-                            type="radio"
-                            name={quiz.questions[currentQuestionIndex].id}
-                            value={option}
-                            checked={answers[quiz.questions[currentQuestionIndex].id] === option}
-                            onChange={(e) =>
-                              handleAnswerChange(quiz.questions[currentQuestionIndex].id, e.target.value)
-                            }
-                            className="w-4 h-4 text-primary"
-                          />
-                          <span className="ml-3 text-slate-700">{option}</span>
-                        </label>
-                      ))}
+                      {quiz.questions[currentQuestionIndex].options?.map(
+                        (option) => (
+                          <label
+                            key={option}
+                            className="flex items-center p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-primary hover:bg-slate-50 transition"
+                          >
+                            <input
+                              type="radio"
+                              name={quiz.questions[currentQuestionIndex].id}
+                              value={option}
+                              checked={
+                                answers[
+                                  quiz.questions[currentQuestionIndex].id
+                                ] === option
+                              }
+                              onChange={(e) =>
+                                handleAnswerChange(
+                                  quiz.questions[currentQuestionIndex].id,
+                                  e.target.value,
+                                )
+                              }
+                              className="w-4 h-4 text-primary"
+                            />
+                            <span className="ml-3 text-slate-700">
+                              {option}
+                            </span>
+                          </label>
+                        ),
+                      )}
                     </div>
                   )}
 
-                  {quiz.questions[currentQuestionIndex].type === "fill-in-blank" && (
+                  {quiz.questions[currentQuestionIndex].type ===
+                    "fill-in-blank" && (
                     <div>
                       <Input
                         type="text"
                         placeholder="Type your answer here..."
-                        value={(answers[quiz.questions[currentQuestionIndex].id] || "") as string}
+                        value={
+                          (answers[quiz.questions[currentQuestionIndex].id] ||
+                            "") as string
+                        }
                         onChange={(e) =>
-                          handleAnswerChange(quiz.questions[currentQuestionIndex].id, e.target.value)
+                          handleAnswerChange(
+                            quiz.questions[currentQuestionIndex].id,
+                            e.target.value,
+                          )
                         }
                         className="h-12"
                       />
                       <p className="text-sm text-slate-500 mt-2">
-                        Tip: Answer should be "{quiz.questions[currentQuestionIndex].correctAnswer}"
+                        Tip: Answer should be "
+                        {quiz.questions[currentQuestionIndex].correctAnswer}"
                       </p>
                     </div>
                   )}
 
-                  {quiz.questions[currentQuestionIndex].type === "binary-choice" && (
+                  {quiz.questions[currentQuestionIndex].type ===
+                    "binary-choice" && (
                     <div className="space-y-3">
-                      {[quiz.questions[currentQuestionIndex].option1, quiz.questions[currentQuestionIndex].option2].map((option) => (
+                      {[
+                        quiz.questions[currentQuestionIndex].option1,
+                        quiz.questions[currentQuestionIndex].option2,
+                      ].map((option) => (
                         <label
                           key={option}
                           className="flex items-center p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-primary hover:bg-slate-50 transition"
@@ -569,9 +627,16 @@ export default function LessonDetail() {
                             type="radio"
                             name={quiz.questions[currentQuestionIndex].id}
                             value={option}
-                            checked={answers[quiz.questions[currentQuestionIndex].id] === option}
+                            checked={
+                              answers[
+                                quiz.questions[currentQuestionIndex].id
+                              ] === option
+                            }
                             onChange={(e) =>
-                              handleAnswerChange(quiz.questions[currentQuestionIndex].id, e.target.value)
+                              handleAnswerChange(
+                                quiz.questions[currentQuestionIndex].id,
+                                e.target.value,
+                              )
                             }
                             className="w-4 h-4 text-primary"
                           />
@@ -581,25 +646,39 @@ export default function LessonDetail() {
                     </div>
                   )}
 
-                  {quiz.questions[currentQuestionIndex].type === "multiple-correct" && (
+                  {quiz.questions[currentQuestionIndex].type ===
+                    "multiple-correct" && (
                     <div className="space-y-3">
-                      <p className="text-sm text-slate-600 mb-4">Select all correct answers:</p>
-                      {quiz.questions[currentQuestionIndex].options?.map((option) => (
-                        <label
-                          key={option}
-                          className="flex items-center p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-primary hover:bg-slate-50 transition"
-                        >
-                          <input
-                            type="checkbox"
-                            checked={(answers[quiz.questions[currentQuestionIndex].id] as string[] || []).includes(option)}
-                            onChange={() =>
-                              toggleMultipleCorrectAnswer(quiz.questions[currentQuestionIndex].id, option)
-                            }
-                            className="w-4 h-4 text-primary"
-                          />
-                          <span className="ml-3 text-slate-700">{option}</span>
-                        </label>
-                      ))}
+                      <p className="text-sm text-slate-600 mb-4">
+                        Select all correct answers:
+                      </p>
+                      {quiz.questions[currentQuestionIndex].options?.map(
+                        (option) => (
+                          <label
+                            key={option}
+                            className="flex items-center p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-primary hover:bg-slate-50 transition"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={(
+                                (answers[
+                                  quiz.questions[currentQuestionIndex].id
+                                ] as string[]) || []
+                              ).includes(option)}
+                              onChange={() =>
+                                toggleMultipleCorrectAnswer(
+                                  quiz.questions[currentQuestionIndex].id,
+                                  option,
+                                )
+                              }
+                              className="w-4 h-4 text-primary"
+                            />
+                            <span className="ml-3 text-slate-700">
+                              {option}
+                            </span>
+                          </label>
+                        ),
+                      )}
                     </div>
                   )}
 
@@ -607,8 +686,14 @@ export default function LessonDetail() {
                     <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                       <p className="text-sm text-blue-700">
                         <span className="font-semibold">Your answer:</span>{" "}
-                        {Array.isArray(answers[quiz.questions[currentQuestionIndex].id])
-                          ? (answers[quiz.questions[currentQuestionIndex].id] as string[]).join(", ")
+                        {Array.isArray(
+                          answers[quiz.questions[currentQuestionIndex].id],
+                        )
+                          ? (
+                              answers[
+                                quiz.questions[currentQuestionIndex].id
+                              ] as string[]
+                            ).join(", ")
                           : answers[quiz.questions[currentQuestionIndex].id]}
                       </p>
                     </div>
@@ -617,7 +702,11 @@ export default function LessonDetail() {
 
                 <div className="flex gap-4 mt-8">
                   <Button
-                    onClick={() => setCurrentQuestionIndex(Math.max(0, currentQuestionIndex - 1))}
+                    onClick={() =>
+                      setCurrentQuestionIndex(
+                        Math.max(0, currentQuestionIndex - 1),
+                      )
+                    }
                     variant="outline"
                     disabled={currentQuestionIndex === 0}
                     className="flex-1 h-12"
@@ -635,7 +724,14 @@ export default function LessonDetail() {
                     </Button>
                   ) : (
                     <Button
-                      onClick={() => setCurrentQuestionIndex(Math.min(totalQuestions - 1, currentQuestionIndex + 1))}
+                      onClick={() =>
+                        setCurrentQuestionIndex(
+                          Math.min(
+                            totalQuestions - 1,
+                            currentQuestionIndex + 1,
+                          ),
+                        )
+                      }
                       className="flex-1 h-12 bg-gradient-to-r from-primary to-emerald-600 hover:from-primary/90 hover:to-emerald-700"
                     >
                       Next Exercise →
@@ -712,7 +808,8 @@ export default function LessonDetail() {
                         >
                           Your answer:{" "}
                           {question.type === "multiple-correct"
-                            ? ((answers[question.id] as string[]) || []).length > 0
+                            ? ((answers[question.id] as string[]) || [])
+                                .length > 0
                               ? (answers[question.id] as string[]).join(", ")
                               : "(No answer)"
                             : answers[question.id] || "(No answer)"}
