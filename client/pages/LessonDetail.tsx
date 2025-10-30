@@ -477,86 +477,150 @@ export default function LessonDetail() {
         {stage === "quiz" && !quizSubmitted && (
           <Card className="p-8 mb-8">
             <div className="mb-8">
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between mb-4">
                 <h2 className="text-2xl font-bold text-slate-900">
-                  Quiz: {quiz.title}
+                  Exercise {currentQuestionIndex + 1} of {totalQuestions}
                 </h2>
-                <span className="text-sm text-slate-600">
+                <span className="text-sm text-slate-600 bg-slate-100 px-3 py-1 rounded-full">
                   {answeredCount} / {totalQuestions} answered
                 </span>
               </div>
-              <Progress value={(answeredCount / totalQuestions) * 100} />
+              <Progress value={((currentQuestionIndex + 1) / totalQuestions) * 100} />
             </div>
 
-            <div className="space-y-8">
-              {quiz.questions.map((question, index) => (
-                <div
-                  key={question.id}
-                  className="pb-8 border-b border-slate-200 last:border-b-0"
-                >
-                  <h3 className="text-lg font-semibold text-slate-900 mb-4">
-                    {index + 1}. {question.question}
+            {quiz.questions.length > 0 && (
+              <div className="mb-8">
+                <div className="mb-6">
+                  <h3 className="text-xl font-semibold text-slate-900 mb-6">
+                    {quiz.questions[currentQuestionIndex].question}
                   </h3>
 
-                  {question.type === "multiple-choice" ? (
+                  {quiz.questions[currentQuestionIndex].type === "multiple-choice" && (
                     <div className="space-y-3">
-                      {question.options?.map((option) => (
+                      {quiz.questions[currentQuestionIndex].options?.map((option) => (
                         <label
                           key={option}
-                          className="flex items-center p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-purple-300 hover:bg-purple-50 transition"
+                          className="flex items-center p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-primary hover:bg-slate-50 transition"
                         >
                           <input
                             type="radio"
-                            name={question.id}
+                            name={quiz.questions[currentQuestionIndex].id}
                             value={option}
-                            checked={answers[question.id] === option}
+                            checked={answers[quiz.questions[currentQuestionIndex].id] === option}
                             onChange={(e) =>
-                              handleAnswerChange(question.id, e.target.value)
+                              handleAnswerChange(quiz.questions[currentQuestionIndex].id, e.target.value)
                             }
-                            className="w-4 h-4 text-purple-600"
+                            className="w-4 h-4 text-primary"
                           />
                           <span className="ml-3 text-slate-700">{option}</span>
                         </label>
                       ))}
                     </div>
-                  ) : (
+                  )}
+
+                  {quiz.questions[currentQuestionIndex].type === "fill-in-blank" && (
                     <div>
                       <Input
                         type="text"
                         placeholder="Type your answer here..."
-                        value={answers[question.id] || ""}
+                        value={(answers[quiz.questions[currentQuestionIndex].id] || "") as string}
                         onChange={(e) =>
-                          handleAnswerChange(question.id, e.target.value)
+                          handleAnswerChange(quiz.questions[currentQuestionIndex].id, e.target.value)
                         }
                         className="h-12"
                       />
                       <p className="text-sm text-slate-500 mt-2">
-                        Tip: Answer should be "{question.correctAnswer}"
+                        Tip: Answer should be "{quiz.questions[currentQuestionIndex].correctAnswer}"
                       </p>
                     </div>
                   )}
 
-                  {answers[question.id] && (
-                    <div className="mt-3 text-sm text-slate-600">
-                      Your answer:{" "}
-                      <span className="font-semibold text-slate-900">
-                        {answers[question.id]}
-                      </span>
+                  {quiz.questions[currentQuestionIndex].type === "binary-choice" && (
+                    <div className="space-y-3">
+                      {[quiz.questions[currentQuestionIndex].option1, quiz.questions[currentQuestionIndex].option2].map((option) => (
+                        <label
+                          key={option}
+                          className="flex items-center p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-primary hover:bg-slate-50 transition"
+                        >
+                          <input
+                            type="radio"
+                            name={quiz.questions[currentQuestionIndex].id}
+                            value={option}
+                            checked={answers[quiz.questions[currentQuestionIndex].id] === option}
+                            onChange={(e) =>
+                              handleAnswerChange(quiz.questions[currentQuestionIndex].id, e.target.value)
+                            }
+                            className="w-4 h-4 text-primary"
+                          />
+                          <span className="ml-3 text-slate-700">{option}</span>
+                        </label>
+                      ))}
+                    </div>
+                  )}
+
+                  {quiz.questions[currentQuestionIndex].type === "multiple-correct" && (
+                    <div className="space-y-3">
+                      <p className="text-sm text-slate-600 mb-4">Select all correct answers:</p>
+                      {quiz.questions[currentQuestionIndex].options?.map((option) => (
+                        <label
+                          key={option}
+                          className="flex items-center p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-primary hover:bg-slate-50 transition"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={(answers[quiz.questions[currentQuestionIndex].id] as string[] || []).includes(option)}
+                            onChange={() =>
+                              toggleMultipleCorrectAnswer(quiz.questions[currentQuestionIndex].id, option)
+                            }
+                            className="w-4 h-4 text-primary"
+                          />
+                          <span className="ml-3 text-slate-700">{option}</span>
+                        </label>
+                      ))}
+                    </div>
+                  )}
+
+                  {answers[quiz.questions[currentQuestionIndex].id] && (
+                    <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                      <p className="text-sm text-blue-700">
+                        <span className="font-semibold">Your answer:</span>{" "}
+                        {Array.isArray(answers[quiz.questions[currentQuestionIndex].id])
+                          ? (answers[quiz.questions[currentQuestionIndex].id] as string[]).join(", ")
+                          : answers[quiz.questions[currentQuestionIndex].id]}
+                      </p>
                     </div>
                   )}
                 </div>
-              ))}
-            </div>
 
-            <div className="mt-8">
-              <Button
-                onClick={handleSubmitQuiz}
-                disabled={!allAnswered}
-                className="w-full h-12 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 disabled:opacity-50"
-              >
-                Submit Quiz
-              </Button>
-            </div>
+                <div className="flex gap-4 mt-8">
+                  <Button
+                    onClick={() => setCurrentQuestionIndex(Math.max(0, currentQuestionIndex - 1))}
+                    variant="outline"
+                    disabled={currentQuestionIndex === 0}
+                    className="flex-1 h-12"
+                  >
+                    ← Previous Exercise
+                  </Button>
+
+                  {currentQuestionIndex === totalQuestions - 1 ? (
+                    <Button
+                      onClick={handleSubmitQuiz}
+                      disabled={answeredCount < totalQuestions}
+                      className="flex-1 h-12 bg-gradient-to-r from-primary to-emerald-600 hover:from-primary/90 hover:to-emerald-700 disabled:opacity-50"
+                    >
+                      Submit Quiz
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={() => setCurrentQuestionIndex(Math.min(totalQuestions - 1, currentQuestionIndex + 1))}
+                      className="flex-1 h-12 bg-gradient-to-r from-primary to-emerald-600 hover:from-primary/90 hover:to-emerald-700"
+                    >
+                      Next Exercise →
+                    </Button>
+                  )}
+                </div>
+              </div>
+            )}
           </Card>
         )}
 
