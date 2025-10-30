@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { LogOut, BookOpen, Menu, X } from "lucide-react";
-
+import { LogOut, Menu, X } from "lucide-react";
+import loogcham from "../Subtract.png"
 export const Header = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -21,8 +21,8 @@ export const Header = () => {
           className="flex items-center gap-3 cursor-pointer"
           onClick={() => navigate("/dashboard")}
         >
-          <div className="bg-gradient-to-br from-primary to-emerald-600 p-2 rounded-lg">
-            <BookOpen className="w-6 h-6 text-white" />
+          <div className="p-2 rounded-lg">
+            <img src={loogcham} alt="LOGO" className="w-10 m-2 h-auto block" />
           </div>
           <h1 className="text-xl font-bold text-slate-900">NOUVELLE ACADEMY</h1>
         </div>

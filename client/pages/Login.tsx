@@ -4,6 +4,7 @@ import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Lock, Mail, BookOpen } from "lucide-react";
+import loogcham from "../Subtract.png"
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -49,8 +50,8 @@ export default function Login() {
         {/* Logo/Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
-            <div className="bg-gradient-to-br from-green-600 to-emerald-600 p-3 rounded-full">
-              <BookOpen className="w-8 h-8 text-white" />
+            <div className="bg-gradient-to-br from-green-100 to-emerald-100 p-3 rounded-full">
+              <img src={loogcham} alt="LOGO" className="w-16 m-auto h-auto block" />
             </div>
           </div>
           <h1 className="text-3xl font-bold text-slate-900 mb-2">
@@ -114,7 +115,7 @@ export default function Login() {
             {/* Submit Button */}
             <Button
               type="submit"
-              className="w-full h-12 bg-gradient-to-r from-primary to-emerald-600 hover:from-primary/90 hover:to-emerald-700 text-white font-semibold rounded-xl text-base"
+              className="w-full h-12 bg-green-400 hover:from-primary/10 hover:to-emerald-100 text-white font-semibold rounded-xl text-base"
             >
               Sign In
             </Button>
