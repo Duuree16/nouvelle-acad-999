@@ -663,12 +663,7 @@ export default function LessonDetail() {
             {/* Question Review */}
             <div className="space-y-6 mb-8">
               {quiz.questions.map((question, index) => {
-                const userAnswer =
-                  answers[question.id]?.trim().toLowerCase() || "";
-                const correctAnswer = question.correctAnswer
-                  .trim()
-                  .toLowerCase();
-                const isCorrect = userAnswer === correctAnswer;
+                const isCorrect = isAnswerCorrect(question);
 
                 return (
                   <div
@@ -692,11 +687,19 @@ export default function LessonDetail() {
                         <p
                           className={`text-sm mb-1 ${isCorrect ? "text-green-700" : "text-red-700"}`}
                         >
-                          Your answer: {answers[question.id] || "(No answer)"}
+                          Your answer:{" "}
+                          {question.type === "multiple-correct"
+                            ? ((answers[question.id] as string[]) || []).length > 0
+                              ? (answers[question.id] as string[]).join(", ")
+                              : "(No answer)"
+                            : answers[question.id] || "(No answer)"}
                         </p>
                         {!isCorrect && (
                           <p className="text-sm text-green-700">
-                            Correct answer: {question.correctAnswer}
+                            Correct answer:{" "}
+                            {question.type === "multiple-correct"
+                              ? question.correctAnswers?.join(", ")
+                              : question.correctAnswer}
                           </p>
                         )}
                       </div>
