@@ -134,17 +134,24 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
       },
       {
         id: "q2",
-        type: "fill-in-blank",
-        question: "If I ________ the exam, I would be very happy.",
-        correctAnswer: "passed",
+        type: "binary-choice",
+        question: "Is conditional sentences always about the future?",
+        option1: "Yes",
+        option2: "No",
+        correctAnswer: "No",
       },
       {
         id: "q3",
-        type: "multiple-choice",
-        question:
-          "Complete: Although she was tired, she _________ to the party.",
-        options: ["went", "go", "going", "gone"],
-        correctAnswer: "went",
+        type: "multiple-correct",
+        question: "Which are correct ways to use subordinate clauses? (Select all that apply)",
+        options: [
+          "After he finished his work",
+          "Because the weather was nice",
+          "Very quickly and happily",
+          "Although it was difficult",
+          "The big red car",
+        ],
+        correctAnswers: ["After he finished his work", "Because the weather was nice", "Although it was difficult"],
       },
       {
         id: "q4",
