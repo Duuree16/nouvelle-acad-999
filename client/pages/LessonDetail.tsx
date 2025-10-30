@@ -346,8 +346,9 @@ export default function LessonDetail() {
   const navigate = useNavigate();
   const { updateLessonProgress } = useAuth();
   const [stage, setStage] = useState<"quiz" | "results">("quiz");
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
   const [quizSubmitted, setQuizSubmitted] = useState(false);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   if (!lessonId || !LESSON_QUIZZES[lessonId]) {
     return (
