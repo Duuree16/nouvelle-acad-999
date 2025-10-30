@@ -287,7 +287,7 @@ const LESSON_DETAILS: Record<
     title: "Everyday Greetings and Introductions",
     category: "A2",
     duration: 45,
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://example.com/videos/lesson-1.mp4",
     description:
       "Master basic greetings, introductions, and common social phrases. Learn how to confidently meet new people and start conversations in English.",
   },
@@ -295,7 +295,7 @@ const LESSON_DETAILS: Record<
     title: "Describing People and Places",
     category: "B1",
     duration: 60,
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://example.com/videos/lesson-2.mp4",
     description:
       "Expand your vocabulary for describing appearances, personalities, and locations. Develop skills to paint vivid pictures with words.",
   },
@@ -303,7 +303,7 @@ const LESSON_DETAILS: Record<
     title: "Complex Sentence Structures",
     category: "B2",
     duration: 75,
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://example.com/videos/lesson-3.mp4",
     description:
       "Master advanced grammar including passive voice, conditionals, and subordinate clauses. Speak and write with sophisticated sentence construction.",
   },
@@ -311,7 +311,7 @@ const LESSON_DETAILS: Record<
     title: "Family and Daily Routines",
     category: "A2",
     duration: 55,
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://example.com/videos/lesson-4.mp4",
     description:
       "Learn vocabulary and expressions for family relationships and everyday activities. Describe your daily life in English with confidence.",
   },
@@ -319,7 +319,7 @@ const LESSON_DETAILS: Record<
     title: "Travel and Holiday Conversations",
     category: "B1",
     duration: 65,
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://example.com/videos/lesson-5.mp4",
     description:
       "Develop practical communication skills for travel situations. Book accommodations, ask for directions, and navigate new places.",
   },
@@ -327,7 +327,7 @@ const LESSON_DETAILS: Record<
     title: "Business and Professional Communication",
     category: "B2",
     duration: 50,
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://example.com/videos/lesson-6.mp4",
     description:
       "Master formal language for business meetings, presentations, and professional correspondence. Excel in corporate English communication.",
   },
