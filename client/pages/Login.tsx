@@ -56,7 +56,7 @@ export default function Login() {
           <h1 className="text-3xl font-bold text-slate-900 mb-2">
             NOUVELLE ACADEMY
           </h1>
-          <p className="text-slate-600">Master English, one lesson at a time</p>
+          <p className="text-slate-600">Боловсрол ер нь л нилээн чухал даа </p>
         </div>
 
         {/* Login Card */}
