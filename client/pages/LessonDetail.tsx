@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
+import { Header } from "@/components/Header";
+import { VideoPlayer } from "@/components/VideoPlayer";
 import { ArrowLeft, Check, X } from "lucide-react";
 
 interface Question {
