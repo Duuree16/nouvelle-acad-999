@@ -11,11 +11,15 @@ import { ArrowLeft, Check, X } from "lucide-react";
 
 interface Question {
   id: string;
-  type: "multiple-choice" | "fill-in-blank";
+  type: "multiple-choice" | "fill-in-blank" | "multiple-correct" | "binary-choice";
   question: string;
   options?: string[];
-  correctAnswer: string;
+  correctAnswer?: string;
+  correctAnswers?: string[];
+  option1?: string;
+  option2?: string;
   userAnswer?: string;
+  userAnswers?: string[];
 }
 
 interface Quiz {
