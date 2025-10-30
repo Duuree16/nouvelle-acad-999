@@ -261,21 +261,25 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
     questions: [
       {
         id: "q1",
-        type: "multiple-choice",
-        question: "How do you formally greet a business colleague?",
-        options: [
-          "Good morning, Mr. Smith",
-          "Hey, what's up?",
-          "Hello buddy",
-          "Yo, how you doing?",
-        ],
-        correctAnswer: "Good morning, Mr. Smith",
+        type: "binary-choice",
+        question: "Should you use abbreviations in formal business emails?",
+        option1: "Yes",
+        option2: "No",
+        correctAnswer: "No",
       },
       {
         id: "q2",
-        type: "fill-in-blank",
-        question: "Could you please send me the ________ of the meeting?",
-        correctAnswer: "minutes",
+        type: "multiple-correct",
+        question: "Which are appropriate for formal business communication? (Select all that apply)",
+        options: [
+          "Professional tone",
+          "Correct grammar",
+          "Slang expressions",
+          "Timely responses",
+          "Emojis",
+          "Clear structure",
+        ],
+        correctAnswers: ["Professional tone", "Correct grammar", "Timely responses", "Clear structure"],
       },
       {
         id: "q3",
