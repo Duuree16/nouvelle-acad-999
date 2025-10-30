@@ -168,21 +168,25 @@ const LESSON_QUIZZES: Record<string, Quiz> = {
     questions: [
       {
         id: "q1",
-        type: "multiple-choice",
-        question: "What time do you usually wake up?",
-        options: [
-          "In the morning at 7 AM",
-          "After lunch",
-          "At midnight",
-          "During sunset",
-        ],
-        correctAnswer: "In the morning at 7 AM",
+        type: "binary-choice",
+        question: "Is breakfast the most important meal of the day?",
+        option1: "Yes",
+        option2: "No",
+        correctAnswer: "Yes",
       },
       {
         id: "q2",
-        type: "fill-in-blank",
-        question: "My mother is the ________ of my father.",
-        correctAnswer: "wife",
+        type: "multiple-correct",
+        question: "Which are common family relationships? (Select all that apply)",
+        options: [
+          "Mother",
+          "Sibling",
+          "Cousin",
+          "Climate",
+          "Uncle",
+          "Material",
+        ],
+        correctAnswers: ["Mother", "Sibling", "Cousin", "Uncle"],
       },
       {
         id: "q3",
