@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Header } from "@/components/Header";
 import { ArrowLeft, BarChart3, TrendingUp, Award } from "lucide-react";
 
 const LESSON_DETAILS: Record<
