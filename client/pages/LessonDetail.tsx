@@ -379,12 +379,25 @@ export default function LessonDetail() {
   const totalQuestions = quiz.questions.length;
   const allAnswered = answeredCount === totalQuestions;
 
+  const isAnswerCorrect = (question: Question): boolean => {
+    if (question.type === "multiple-correct") {
+      const userAnswers = (answers[question.id] || []) as string[];
+      const correctAnswers = question.correctAnswers || [];
+      if (userAnswers.length !== correctAnswers.length) return false;
+      const sortedUser = [...userAnswers].sort();
+      const sortedCorrect = [...correctAnswers].sort();
+      return sortedUser.every((ans, idx) => ans === sortedCorrect[idx]);
+    } else {
+      const userAnswer = (answers[question.id] || "").toString().trim().toLowerCase();
+      const correctAnswer = (question.correctAnswer || "").trim().toLowerCase();
+      return userAnswer === correctAnswer;
+    }
+  };
+
   const calculateScore = () => {
     let correct = 0;
     quiz.questions.forEach((q) => {
-      const userAnswer = answers[q.id]?.trim().toLowerCase() || "";
-      const correctAnswer = q.correctAnswer.trim().toLowerCase();
-      if (userAnswer === correctAnswer) {
+      if (isAnswerCorrect(q)) {
         correct++;
       }
     });
