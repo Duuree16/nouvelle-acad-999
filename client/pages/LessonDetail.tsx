@@ -430,17 +430,7 @@ export default function LessonDetail() {
 
         {/* Video Player */}
         <Card className="p-6 mb-8">
-          <div className="aspect-video bg-black rounded-lg overflow-hidden">
-            <iframe
-              width="100%"
-              height="100%"
-              src={lesson.videoUrl}
-              title={lesson.title}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
+          <VideoPlayer src={lesson.videoUrl} title={lesson.title} />
         </Card>
 
         {/* Stage Indicator */}
