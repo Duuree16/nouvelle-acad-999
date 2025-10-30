@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Header } from "@/components/Header";
-import { Play, Calendar } from "lucide-react";
+import { Play, Calendar, LogOut } from "lucide-react";
 
 interface Lesson {
   id: string;
