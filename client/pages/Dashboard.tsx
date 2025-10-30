@@ -4,7 +4,8 @@ import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { BookOpen, Play, Calendar, LogOut, Menu, X } from "lucide-react";
+import { Header } from "@/components/Header";
+import { Play, Calendar } from "lucide-react";
 
 interface Lesson {
   id: string;
