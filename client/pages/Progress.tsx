@@ -82,8 +82,9 @@ export default function Progress() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+      <Header />
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Header */}
+        {/* Back Button */}
         <Button
           onClick={() => navigate("/dashboard")}
           variant="outline"
