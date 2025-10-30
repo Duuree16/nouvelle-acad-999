@@ -116,9 +116,8 @@ const MOCK_SESSIONS: LiveSession[] = [
 ];
 
 export default function Dashboard() {
-  const { user, logout, getLessonProgress } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const filteredLessons = activeCategory
