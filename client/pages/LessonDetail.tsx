@@ -407,11 +407,19 @@ export default function LessonDetail() {
   const score = quizSubmitted ? calculateScore() : 0;
   const passed = score === 100;
 
-  const handleAnswerChange = (questionId: string, value: string) => {
+  const handleAnswerChange = (questionId: string, value: string | string[]) => {
     setAnswers((prev) => ({
       ...prev,
       [questionId]: value,
     }));
+  };
+
+  const toggleMultipleCorrectAnswer = (questionId: string, option: string) => {
+    const currentAnswers = (answers[questionId] || []) as string[];
+    const updated = currentAnswers.includes(option)
+      ? currentAnswers.filter((a) => a !== option)
+      : [...currentAnswers, option];
+    handleAnswerChange(questionId, updated);
   };
 
   const handleSubmitQuiz = () => {
