@@ -153,16 +153,21 @@ export default function Login() {
             {/* Submit Button */}
             <Button
               type="submit"
+              disabled={loading}
               className="w-full h-12 bg-green-400 hover:from-primary/10 hover:to-emerald-100 text-white font-semibold rounded-xl text-base"
             >
-              Sign In
+              {loading ? "Signing in..." : "Sign In"}
             </Button>
 
-            {/* Demo Info */}
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-3 text-sm text-purple-800">
-              <p className="font-medium mb-1">Demo Account</p>
-              <p>Email: demo@example.com</p>
-              <p>Password: any password</p>
+            {/* Sign Up Link */}
+            <div className="text-center text-sm text-slate-600">
+              Don't have an account?{" "}
+              <Link
+                to="/register"
+                className="text-green-600 hover:text-green-700 font-medium"
+              >
+                Sign up
+              </Link>
             </div>
           </form>
         </div>
