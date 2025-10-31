@@ -753,6 +753,13 @@ export default function LessonDetail() {
                     </Button>
                   )}
                 </div>
+
+                {/* Error Message */}
+                {progressError && (
+                  <div className="mt-6 bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 text-sm">
+                    {progressError}
+                  </div>
+                )}
               </div>
             )}
           </Card>
