@@ -477,12 +477,27 @@ export default function LessonDetail() {
     handleAnswerChange(questionId, updated);
   };
 
-  const handleSubmitQuiz = () => {
+  const [submittingProgress, setSubmittingProgress] = useState(false);
+  const [progressError, setProgressError] = useState("");
+
+  const handleSubmitQuiz = async () => {
     if (allAnswered) {
       const finalScore = calculateScore();
-      updateLessonProgress(lessonId!, finalScore, finalScore >= 50);
-      setQuizSubmitted(true);
-      setStage("results");
+      setSubmittingProgress(true);
+      setProgressError("");
+
+      try {
+        await updateLessonProgress(lessonId!, finalScore, finalScore >= 50);
+        setQuizSubmitted(true);
+        setStage("results");
+      } catch (error) {
+        console.error("Failed to save progress:", error);
+        setProgressError(
+          "Failed to save your progress. Please check your connection and try again."
+        );
+      } finally {
+        setSubmittingProgress(false);
+      }
     }
   };
 
