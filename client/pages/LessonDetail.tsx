@@ -732,10 +732,10 @@ export default function LessonDetail() {
                   {currentQuestionIndex === totalQuestions - 1 ? (
                     <Button
                       onClick={handleSubmitQuiz}
-                      disabled={answeredCount < totalQuestions}
+                      disabled={answeredCount < totalQuestions || submittingProgress}
                       className="flex-1 h-12 bg-gradient-to-r from-primary to-emerald-600 hover:from-primary/90 hover:to-emerald-700 disabled:opacity-50"
                     >
-                      Submit Quiz
+                      {submittingProgress ? "Saving progress..." : "Submit Quiz"}
                     </Button>
                   ) : (
                     <Button
