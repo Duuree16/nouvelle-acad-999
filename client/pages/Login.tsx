@@ -22,7 +22,7 @@ export default function Login() {
     }
   }, [isAuthenticated, navigate]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
@@ -36,8 +36,32 @@ export default function Login() {
       return;
     }
 
-    login(email, password);
-    navigate("/dashboard");
+    setLoading(true);
+
+    try {
+      const response = await authAPI.login({ email, password });
+
+      // Store token and update auth context
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("user", JSON.stringify(response.user));
+      login(response.user, response.token);
+
+      navigate("/dashboard");
+    } catch (err: any) {
+      console.error("Login error:", err);
+
+      if (err.response?.data?.error) {
+        setError(err.response.data.error);
+      } else if (err.response?.status === 401) {
+        setError("Invalid email or password");
+      } else if (err.response?.status === 429) {
+        setError("Too many login attempts. Try again in 15 minutes");
+      } else {
+        setError("Login failed. Please try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
