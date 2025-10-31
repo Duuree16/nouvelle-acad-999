@@ -45,7 +45,7 @@ export const Header = () => {
             onClick={() => navigate("/sessions")}
             className="text-slate-600 hover:text-primary font-medium transition"
           >
-            Live Sessions
+            Live hicheeludd
           </button>
         </nav>
 
