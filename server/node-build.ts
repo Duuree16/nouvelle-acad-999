@@ -1,5 +1,6 @@
 import path from "path";
 import { createServer } from "./index";
+import { connectDatabase } from "./config/database";
 import * as express from "express";
 
 const app = createServer();
@@ -22,11 +23,19 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(distPath, "index.html"));
 });
 
-app.listen(port, () => {
-  console.log(`🚀 Fusion Starter server running on port ${port}`);
-  console.log(`📱 Frontend: http://localhost:${port}`);
-  console.log(`🔧 API: http://localhost:${port}/api`);
-});
+// Connect to database before starting server
+connectDatabase()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`🚀 Fusion Starter server running on port ${port}`);
+      console.log(`📱 Frontend: http://localhost:${port}`);
+      console.log(`🔧 API: http://localhost:${port}/api`);
+    });
+  })
+  .catch((error) => {
+    console.error("Failed to connect to database:", error);
+    process.exit(1);
+  });
 
 // Graceful shutdown
 process.on("SIGTERM", () => {
